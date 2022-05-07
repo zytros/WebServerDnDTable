@@ -1,0 +1,16 @@
+METHODS: GET, POST
+    GET%1attr: attr is attribute for what to get, respond with correct data
+    POST%1password%1data : password for identification, data in format var%3val%2var%3val...%%
+
+GET attr:
+    chardata
+    ledinfo
+
+Seperators:
+    %1: request seperator
+    %2: character seperator
+    %3: field seperator
+    %: desc seperator
+    %%: EOF
+
+POST%1password%1name%:peter%2name%:sahra%3age%:21%%

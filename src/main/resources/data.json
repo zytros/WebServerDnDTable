@@ -1,0 +1,29 @@
+{
+  "characters": [
+    {
+      "name": "name1",
+      "currentHP": 50,
+      "maxHP": 100
+    },
+    {
+      "name": "name2",
+      "currentHP": 50,
+      "maxHP": 100
+    },
+    {
+      "name": "name3",
+      "currentHP": 50,
+      "maxHP": 100
+    },
+    {
+      "name": "name4",
+      "currentHP": 50,
+      "maxHP": 100
+    },
+    {
+      "name": "name5",
+      "currentHP": 50,
+      "maxHP": 100
+    }
+  ]
+}
