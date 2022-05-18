@@ -1,6 +1,6 @@
 package core;
 
-import JSON.Data;
+import JSON.CharacterData;
 
 import java.io.IOException;
 import java.net.ServerSocket;
@@ -8,7 +8,7 @@ import java.net.Socket;
 
 public class ServerListenerThread extends Thread{
     ServerSocket serverSocket;
-    Data data = new Data();
+    CharacterData characterData = new CharacterData();
 
     public ServerListenerThread(ServerSocket serverSocket){
         this.serverSocket = serverSocket;
@@ -18,8 +18,8 @@ public class ServerListenerThread extends Thread{
         try {
             while(serverSocket.isBound() && !serverSocket.isClosed()) {
                 Socket socket = this.serverSocket.accept();
-
-                ConnectionWorkerThread workerThread = new ConnectionWorkerThread(socket, data);
+                System.out.println("started");
+                ConnectionWorkerThread workerThread = new ConnectionWorkerThread(socket, characterData);
                 workerThread.start();
             }
 

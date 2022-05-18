@@ -1,16 +1,17 @@
 package JSON;
 
 
+import com.fasterxml.jackson.core.type.TypeReference;
+
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
-public class Data {
+public class CharacterData {
     public int charnums = 4;
     public Character[] characters = new Character[charnums];
     public Json json = new Json();
 
-    public Data(){
+    public CharacterData(){
         for(int i = 0; i < charnums; i++){
             characters[i] = new Character(i);
         }
@@ -26,7 +27,7 @@ public class Data {
     }
 
     public void postUpdate(String update){
-        List<Character> chars = json.fromJSON(update);
+        List<Character> chars = json.fromJSON(update, Character[].class);
         for (Character c : chars){
             for (Character cs : characters){
                 if (c.getName().equals(cs.getName())){

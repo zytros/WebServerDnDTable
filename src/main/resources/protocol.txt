@@ -1,6 +1,6 @@
 METHODS: GET, POST
-    GET%1attr: attr is attribute for what to get, respond with correct data
-    POST%1password%1data : password for identification, data in format var%3val%2var%3val...%%
+    GET%1attr: attr is attribute for what to get, respond with correct characterData
+    POST%1password%1data : password for identification, characterData in format var%3val%2var%3val...%%
 
 GET attr:
     chardata

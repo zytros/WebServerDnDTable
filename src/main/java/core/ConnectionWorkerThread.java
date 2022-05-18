@@ -1,6 +1,6 @@
 package core;
 
-import JSON.Data;
+import JSON.CharacterData;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
@@ -11,12 +11,12 @@ import java.net.Socket;
 public class ConnectionWorkerThread extends Thread{
 
     private Socket socket;
-    private Data data;
+    private CharacterData characterData;
 
 
-    public ConnectionWorkerThread(Socket socket, Data data){
+    public ConnectionWorkerThread(Socket socket, CharacterData characterData){
         this.socket = socket;
-        this.data = data;
+        this.characterData = characterData;
     }
 
     @Override
@@ -34,7 +34,7 @@ public class ConnectionWorkerThread extends Thread{
             String[] splreq = request.split("%1");
             if(splreq[0].equals("GET")){
                 if(splreq[1].equals("chardata")){
-                    response = data.getRequest();
+                    response = characterData.getRequest();
                 }else if(splreq[1].equals("ledinfo")){
                     //TODO ledinfo
                 }
@@ -42,7 +42,7 @@ public class ConnectionWorkerThread extends Thread{
             }else if(splreq[0].equals("POST")){
                 if(splreq[1].equals("pw")){
                     //check pw
-                    data.postUpdate(splreq[2]);
+                    characterData.postUpdate(splreq[2]);
                     response = "1";
                 }else {
                     response = "0";

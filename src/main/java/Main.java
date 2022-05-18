@@ -1,18 +1,30 @@
 import JSON.Character;
-import JSON.Data;
+import JSON.CharacterData;
+import core.ServerListenerThread;
 
+import java.io.IOException;
+import java.net.ServerSocket;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
-    public static void main(String[] args) {
-        Data data = new Data();
-        System.out.println(data.getRequest());
+    static int port = 55239;
+    public static void main(String[] args) throws IOException {
+        testParsing();
+        /*
+        ServerListenerThread serverListenerThread = new ServerListenerThread(new ServerSocket(port));
+        Thread t = new Thread(serverListenerThread);
+        t.start();*/
+    }
+
+    public static void testParsing(){
+        CharacterData characterData = new CharacterData();
+        System.out.println(characterData.getRequest());
         for (int i = 1; i < 3; i++){
-            data.characters[i].setMaxHP(100);
-            data.characters[i].setCurrentHP(50+i);
+            characterData.characters[i].setMaxHP(100);
+            characterData.characters[i].setCurrentHP(50+i);
         }
-        data.postUpdate(data.json.toJSON(new ArrayList<Character>(List.of(data.characters))));
-        System.out.println(data.getRequest());
+        characterData.postUpdate(characterData.json.toJSON(new ArrayList<Character>(List.of(characterData.characters))));
+        System.out.println(characterData.getRequest());
     }
 }
