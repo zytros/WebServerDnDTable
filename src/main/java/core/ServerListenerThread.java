@@ -20,7 +20,8 @@ public class ServerListenerThread extends Thread{
                 Socket socket = this.serverSocket.accept();
                 System.out.println("started");
                 ConnectionWorkerThread workerThread = new ConnectionWorkerThread(socket, characterData);
-                workerThread.start();
+                Thread t = new Thread(workerThread);
+                t.start();
             }
 
 

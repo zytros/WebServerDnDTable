@@ -1,11 +1,13 @@
-package core;
+ package core;
 
 import JSON.CharacterData;
 
+import java.io.BufferedReader;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.net.Socket;
 
 public class ConnectionWorkerThread extends Thread{
@@ -25,11 +27,15 @@ public class ConnectionWorkerThread extends Thread{
         DataOutputStream outputStream = null;
         try {
             inputStream = socket.getInputStream();
+            BufferedReader in = new BufferedReader(new InputStreamReader(inputStream));
             outputStream = new DataOutputStream(socket.getOutputStream());
 
 
             DataInputStream input = new DataInputStream(inputStream);
-            String request = input.readUTF();
+            //String request = input.readUTF();
+            String request = in.readLine();
+            //System.out.println(request);
+
             String response = null;
             String[] splreq = request.split("%1");
             if(splreq[0].equals("GET")){
@@ -46,9 +52,11 @@ public class ConnectionWorkerThread extends Thread{
                     response = "1";
                 }else {
                     response = "0";
-                }
+                } 
             }
 
+
+            //System.out.println(response);
             outputStream.writeUTF(response);
 
         } catch (IOException e) {

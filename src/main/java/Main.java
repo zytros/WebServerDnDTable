@@ -10,11 +10,11 @@ import java.util.List;
 public class Main {
     static int port = 55239;
     public static void main(String[] args) throws IOException {
-        testParsing();
-        /*
+        //testParsing();
+        
         ServerListenerThread serverListenerThread = new ServerListenerThread(new ServerSocket(port));
         Thread t = new Thread(serverListenerThread);
-        t.start();*/
+        t.start();
     }
 
     public static void testParsing(){
